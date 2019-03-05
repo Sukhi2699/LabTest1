@@ -16,4 +16,10 @@ class TestController extends AbstractController
             'controller_name' => 'TestController',
         ]);
     }
+    public function contact()
+    {
+        return $this->render('test/ContactDetails.html.twig', [
+            'controller_name' => 'TestController',
+        ]);
+    }
 }
