@@ -1,0 +1,25 @@
+interface FastEthernet1/14
+ description FE to PC-C
+ switchport access vlan 30
+ spanning-tree portfast
+
+
+
+lab 3a
+
+DLS 1
+Dls 2
+vlan 70 to be created on pc c and dls 2
+search for  everything related to vlan 30
+spanning tree priority high on dls 2
+allow truk on vlan 70 for both port channels 
+int on dls needs to allow vlan 70 
+change all vlan 30 to 70 
+ 
+int connets to pc c allows vlan 30 to 70n  (switchport access)
+vlan 70 set for dls 1 and 2
+make sure ip is correct 
+do a static ip on vcps 
+
+another issue in router 2
+

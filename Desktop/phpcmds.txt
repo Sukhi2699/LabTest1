@@ -1,0 +1,47 @@
+1. the Server recipe
+composer req --dev server
+2. the Maker recipe (for development setup):
+composer req --dev make
+3. Add the Symfony PHPUnit bridge(for development setup):
+composer req --dev phpunit
+4. Add the Symfony web profiler (with great dump() functions!)
+composer req --dev profiler
+5. Add the Symfony debugging libraries
+composer req --dev debug
+
+Add Twig :
+composer req twig
+
+Add the Symfony security checker - a good one to always have
+composer req sec-checker
+
+Controller :$ php bin/console make:controller Default
+
+Add Annotations :
+$ composer req annotations
+
+
+Run SERver
+$ php bin/console server:run
+
+
+. Create new Symfony 4 project (and then cd into it):
+$ composer create-project symfony/skeleton webframe19
+
+
+clear chache
+$ php bin/console cache:clear
+
+composer req make security-csrf form validator annotations profiler twig sec-checker doctrine orm-fixtures fzaninotto/faker server debug security
+
+
+composer req --dev server make phpunit debug profiler
+$ php bin/console make:Entity Book
+$ php bin/console doctrine:database:create (schema)
+$ php bin/console doctrine:migtations:migrate
+$ php bin/console doctrine:fixtures:load
+$ php bin/console doctrine:migtations:diff
+
+
+make crud
+last
