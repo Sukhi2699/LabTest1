@@ -8,42 +8,34 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
-class UserFixture extends Fixture
+class UserFixtures extends Fixture
 {
     private $passwordEncoder;
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
-
     }
     public function load(ObjectManager $manager)
     {
-        $userUser = $this->createUser('user@user.com', 'user');
-        $userAdmin = $this->createUser('admin@admin.com', 'admin', 'ROLE_HEAD');
-        $userHead = $this->createUser('head@head.com', 'head', 'ROLE_ADMIN');
-
+// create objects
+        $userUser = $this->createUser('user1', 'user');
+        $userHead = $this->createUser('headUsr', 'admin', 'ROLE_HEAD');
+        $userAdmin = $this->createUser('adminUsr', 'smith', 'ROLE_ADMIN');
+// add to DB queue
         $manager->persist($userUser);
-        $manager->persist($userAdmin);
         $manager->persist($userHead);
-
+        $manager->persist($userAdmin);
         $manager->flush();
     }
-
-
-    public function createUser($username, $plainPassword, $role = 'ROLE_USER'):User
+    private function createUser($username, $plainPassword, $roles = 'ROLE_USER'):User
     {
-
         $user = new User();
-        $user->setEmail($username);
-        $user->setRole($role);
-
-        // password - and encoding
+        $user->setUsername($username);
+        $user->setRole($roles);
+// password - and encoding
         $encodedPassword = $this->passwordEncoder->encodePassword($user, $plainPassword);
         $user->setPassword($encodedPassword);
         return $user;
     }
-
 }
-
-
-use App\Entity\User;
+
